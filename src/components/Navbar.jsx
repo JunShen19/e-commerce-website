@@ -35,11 +35,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-<<<<<<< HEAD
-          {/* THEME ICONS */}
-=======
           <Toggle />
->>>>>>> feat/toggle
           {/* CART LINK*/}
           <NavLink to="cart" className="btn btn-ghost btn-circle btn-md ml-4">
             <div className="indicator">
