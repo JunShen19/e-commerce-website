@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsSunFill, BsMoonFill } from "react-icons/bs";
 const Toggle = () => {
-  const [theme, setTheme] = useState(false);
+  const themes = { winter: "winter", dracula: "dracula" };
+  const getThemeFromLocalStorage = () => {
+    return localStorage.getItem("theme") || themes.dracula;
+  };
+  const [theme, setTheme] = useState(getThemeFromLocalStorage());
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const handleTheme = () => {
-    setTheme(!theme);
+    const { winter, dracula } = themes;
+    const newTheme = theme === winter ? dracula : winter;
+    setTheme(newTheme);
   };
 
   return (
